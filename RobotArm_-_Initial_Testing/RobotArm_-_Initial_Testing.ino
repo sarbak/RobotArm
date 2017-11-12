@@ -16,6 +16,8 @@ int potentio_bottom = A0;      // initialize the pin for potentiometer
 int potentio_middle = A2;      // initialize the pin for potentiometer
 int potentio_top = A5;      // initialize the pin for potentiometer
 
+
+
 void setup() 
 {
    
@@ -26,6 +28,8 @@ void setup()
  servo_top.attach(servo_top_output);   // attach the signal pin of servo to pin
 
 } 
+
+
  
 void loop() 
 {
@@ -42,4 +46,9 @@ void loop()
  
  delay(5);             
 
+ Serial.print(servo_bottom.read()); Serial.print(", ");
+ Serial.print(servo_middle.read()); Serial.print(", ");
+ Serial.println(servo_top.read());
+
+ //armAngle(9);
 }  
