@@ -16,7 +16,7 @@ int potentio_bottom = A0;      // initialize the pin for potentiometer
 int potentio_middle = A2;      // initialize the pin for potentiometer
 int potentio_top = A5;      // initialize the pin for potentiometer
 
-double geo_height = 7.4;
+double geo_height = 7.6;
 double geo_arm_length = 5.7;
 double geo_hand_length = 1.0 + 4.5;
 
@@ -116,26 +116,29 @@ void moveTo(double dist){
 
 void slowlyMoveTo(double armAngle, double handAngle){
   
+  double armInterval = fabs(armAngle-angle_middle)/10;
+  double handInterval = fabs(handAngle-angle_top)/10;
+  
   while(true){
     
-    if(fabs(armAngle-angle_middle)>interval){
+    if(fabs(armAngle-angle_middle)>armInterval){
       if(armAngle > angle_middle){
-        angle_middle += interval;
+        angle_middle += armInterval;
        }
        else{
-        angle_middle -= interval;
+        angle_middle -= armInterval;
        }
     }
     else{
       angle_middle = armAngle;
     }
     
-    if(fabs(handAngle-angle_top)>interval){
+    if(fabs(handAngle-angle_top)>handInterval){
       if(handAngle > angle_top){
-        angle_top += interval;
+        angle_top += handInterval;
        }
        else{
-        angle_top -= interval;
+        angle_top -= handInterval;
        }
     }
     else{
