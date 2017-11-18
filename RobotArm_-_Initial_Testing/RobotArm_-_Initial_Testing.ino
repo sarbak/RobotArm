@@ -34,18 +34,16 @@ void setup()
 void loop() 
 {
    
- angle_bottom = map(analogRead(potentio_bottom), 0, 1023, 60, 120);     // scaling the potentiometer value to angle value for servo
- angle_middle = map(analogRead(potentio_middle), 0, 1023, 30, 210);     // scaling the potentiometer value to angle value for servo
+ angle_bottom = map(analogRead(potentio_bottom), 0, 1023, 1, 180);     // scaling the potentiometer value to angle value for servo
+ angle_middle = map(analogRead(potentio_middle), 0, 1023, 1, 180);     // scaling the potentiometer value to angle value for servo
  angle_top = map(analogRead(potentio_top), 0, 1023, 1, 240);  // scaling the potentiometer value to angle value for servo
 
  //Serial.println(angle_middle);
 
  // CONTROLS ARE MESSED UP FOR SOME TESTING PURPOSES
- servo_bottom.write(angle_top/240*90+30);                   //command to rotate the servo to the specified angle 
- servo_middle.write(angle_top);
- servo_top.write(angle_top);
- 
- delay(5);             
+ servo_bottom.write(angle_bottom);                   //command to rotate the servo to the specified angle 
+ servo_middle.write(angle_middle);
+ servo_top.write(angle_top);            
 
  Serial.print(servo_bottom.read()); Serial.print(", ");
  Serial.print(servo_middle.read()); Serial.print(", ");
